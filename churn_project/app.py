@@ -8,6 +8,15 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
 
 
 model = tf.keras.models.load_model('churn_model.h5')
+import os
+
+file_path = 'churn_model.h5'  # Adjust as needed
+if not os.path.isfile(file_path):
+    st.error(f"Model file not found at {file_path}")
+else:
+    model = tf.keras.models.load_model(file_path)
+    st.success("Model loaded successfully.")
+
 
 
 # Load the scaler and encoder objects
